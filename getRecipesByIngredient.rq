@@ -1,5 +1,5 @@
 #+ method: POST
-#+ endpoint: http://192.168.0.1:3030/recipes/query
+#+ endpoint: http://localhost:3030/recipes/query
 #+ summary: Get Recipes that contain given ingredient ?_ingr
 #+ defaults:
 #+   - ingr: http://recipes.wikia.com/wiki/beef
