@@ -1,0 +1,16 @@
+#+ method: GET
+#+ endpoint: http://172.18.0.1:3030/recipes/query
+#+ summary: Get Recipes that contain given ingredient ?_ingr
+#+ defaults:
+#+   - ingr: http://recipes.wikia.com/wiki/beef
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX wikia: <http://recipes.wikia.com/wiki/>
+
+SELECT ?recipe
+{
+  ?recipe rdf:type schema:Recipe;
+          schema:recipeIngredient ?_ingr_iri.
+}
