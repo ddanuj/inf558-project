@@ -1,4 +1,4 @@
-#+ method: GET
+#+ method: POST
 #+ endpoint: http://192.168.0.1:3030/recipes/query
 #+ summary: Get Recipes that contain given ingredient ?_ingr
 #+ defaults:
