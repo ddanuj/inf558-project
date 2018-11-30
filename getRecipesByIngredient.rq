@@ -1,5 +1,6 @@
-#+ method: GET
-#+ endpoint: http://172.18.0.1:3030/recipes/query
+
+#+ method: POST
+#+ endpoint: http://0.0.0.0:3030/recipes/query
 #+ summary: Get Recipes that contain given ingredient (TODO make ingredient configurable)
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -15,3 +16,4 @@ SELECT DISTINCT ?ingredient_name ?recipe_name ?recipe
   FILTER contains(lcase(?ingredient_name), lcase("Beef"))
 }
 ORDER BY ?ingredient_name
+
