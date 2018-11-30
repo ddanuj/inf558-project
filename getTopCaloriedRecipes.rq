@@ -2,7 +2,7 @@
 #+ endpoint: http://0.0.0.0:3030/recipes/query
 #+ summary: Get n top caloried recipes
 #+ defaults:
-#+   - n: 10
+#+   - limit: 10
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -16,4 +16,4 @@ SELECT DISTINCT ?recipe ?recipe_name ?calories
   ?nutrition schema:calories ?calories.
 }
 ORDER BY DESC(xsd:float(?calories)) ?recipe_name
-LIMIT ?_n_integer
+LIMIT ?_limit_integer
