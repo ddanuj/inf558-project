@@ -1,0 +1,11 @@
+#+ method: POST
+#+ endpoint: http://0.0.0.0:3030/recipes/query
+#+ summary: Get all metadata for any resource
+#+ defaults:
+#+   - res: http://recipes.wikia.com/wiki/%22Au_Jus%22_Beef_and_Noodles
+
+SELECT ?p ?o
+WHERE
+{
+   ?_res_iri ?p ?o.
+}
