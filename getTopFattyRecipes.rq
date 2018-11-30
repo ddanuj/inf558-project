@@ -1,4 +1,4 @@
-#+ method: GET
+#+ method: POST
 #+ endpoint: http://0.0.0.0:3030/recipes/query
 #+ summary: Get top fatty recipes (TODO: make LIMIT configurable)
 

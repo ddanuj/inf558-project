@@ -1,4 +1,4 @@
-#+ method: GET
+#+ method: POST
 #+ endpoint: http://172.18.0.1:3030/recipes/query
 #+ summary: Get Recipes that contain given category (TODO make category configurable)
 
