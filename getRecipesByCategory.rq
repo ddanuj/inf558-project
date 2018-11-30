@@ -1,0 +1,17 @@
+#+ method: GET
+#+ endpoint: http://172.18.0.1:3030/recipes/query
+#+ summary: Get Recipes that contain given category (TODO make category configurable)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?category_name ?recipe_name ?recipe
+{
+  ?recipe rdf:type schema:Recipe;
+          schema:name ?recipe_name;
+          schema:recipeCategory ?category.
+  ?category rdf:type schema:Text;
+            rdf:value ?category_name.
+  FILTER contains(lcase(?category_name), lcase("Beef"))
+}
+ORDER BY ?category_name

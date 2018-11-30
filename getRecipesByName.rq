@@ -1,0 +1,14 @@
+#+ method: GET
+#+ endpoint: http://172.18.0.1:3030/recipes/query
+#+ summary: Get Recipe names that contain given string (TODO make string configurable)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?recipe_name ?recipe
+{
+  ?recipe rdf:type schema:Recipe;
+          schema:name ?recipe_name;
+  FILTER contains(lcase(?recipe_name), lcase("Beef"))
+}
+ORDER BY ?recipe_name

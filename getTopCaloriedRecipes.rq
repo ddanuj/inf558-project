@@ -1,0 +1,17 @@
+#+ method: GET
+#+ endpoint: http://0.0.0.0:3030/recipes/query
+#+ summary: Get top caloried recipes (TODO: make LIMIT configurable)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?recipe ?recipe_name ?calories
+{
+  ?recipe rdf:type schema:Recipe;
+          schema:name ?recipe_name;
+          schema:nutrition ?nutrition.
+  ?nutrition schema:calories ?calories.
+}
+ORDER BY DESC(xsd:float(?calories)) ?recipe_name
+LIMIT 10

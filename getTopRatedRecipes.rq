@@ -1,0 +1,15 @@
+#+ method: GET
+#+ endpoint: http://0.0.0.0:3030/recipes/query
+#+ summary: Get top rated recipes (TODO: make LIMIT configurable)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?recipe ?recipe_name ?recipe_rating
+{
+  ?recipe rdf:type schema:Recipe;
+          schema:name ?recipe_name;
+          schema:aggregateRating ?recipe_rating.
+}
+ORDER BY DESC(?recipe_rating)
+LIMIT 10

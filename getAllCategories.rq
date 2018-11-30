@@ -1,0 +1,13 @@
+#+ method: GET
+#+ endpoint: http://0.0.0.0:3030/recipes/query
+#+ summary: Get all categories uri and names
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?category ?category_name
+{
+  ?recipe rdf:type schema:Recipe;
+          schema:recipeCategory ?category.
+  ?category rdf:value ?category_name.
+}
