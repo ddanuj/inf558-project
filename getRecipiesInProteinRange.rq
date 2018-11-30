@@ -1,6 +1,9 @@
 #+ method: POST
 #+ endpoint: http://0.0.0.0:3030/recipes/query
-#+ summary: Get recipes in protein content range (TODO: make protein content range configurable)
+#+ summary: Get recipes in protein range
+#+ defaults:
+#+   - pl: 10.0
+#+   - pu: 20.0
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -12,6 +15,6 @@ SELECT DISTINCT ?recipe ?recipe_name ?proteinContent
           schema:name ?recipe_name;
           schema:nutrition ?nutrition.
   ?nutrition schema:proteinContent ?proteinContent.
-  FILTER (xsd:float(?proteinContent) >= 10.0 && xsd:float(?proteinContent) <= 20.0)
+  FILTER (xsd:float(?proteinContent) >= ?_pl_float && xsd:float(?proteinContent) <= ?_pu_float)
 }
 ORDER BY xsd:float(?proteinContent) ?recipe_name
