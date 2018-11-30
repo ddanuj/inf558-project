@@ -1,7 +1,8 @@
-
 #+ method: POST
 #+ endpoint: http://0.0.0.0:3030/recipes/query
-#+ summary: Get Recipes that contain given ingredient (TODO make ingredient configurable)
+#+ summary: Get Recipes that contain given ingredient
+#+ defaults:
+#+   - ingr: Beef
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -13,7 +14,7 @@ SELECT DISTINCT ?ingredient_name ?recipe_name ?recipe
           schema:recipeIngredient ?ingredient.
   ?ingredient rdf:type schema:Text;
             rdf:value ?ingredient_name.
-  FILTER contains(lcase(?ingredient_name), lcase("Beef"))
+  FILTER contains(lcase(?ingredient_name), lcase(?_ingr_string))
 }
 ORDER BY ?ingredient_name
 
