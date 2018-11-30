@@ -1,5 +1,5 @@
 #+ method: POST
-#+ endpoint: http://172.18.0.1:3030/recipes/query
+#+ endpoint: http://0.0.0.0:3030/recipes/query
 #+ summary: Get Recipe names that contain given string (TODO make string configurable)
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
