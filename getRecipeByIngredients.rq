@@ -1,0 +1,18 @@
+#+ method: POST
+#+ endpoint: http://0.0.0.0:3030/recipes/query
+#+ summary: Get Recipes that contain given 2 ingredients
+#+ defaults:
+#+   - ingr1: Beef
+#+   - ingr2: Mushrooms
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?recipe_name ?recipe
+{
+  ?recipe rdf:type schema:Recipe;
+          schema:name ?recipe_name;
+          schema:ingredients ?ingredients.
+  FILTER (contains(lcase(?ingredients), lcase(?_ingr1_string)) && contains(lcase(?ingredients), lcase(?_ingr2_string)))
+}
+ORDER BY ?recipe_name
